@@ -30,19 +30,30 @@ for(let button of selectButtons){
 document.getElementById('player-fee-total').addEventListener('click', function(){
 
     const playerFee = parseInt(document.getElementById('player-fee').value);
-    let playersFeeTotal = playersArray.length * playerFee;
-    document.getElementById('player-expense').innerText = playersFeeTotal;
-   
+    if(isNaN(playerFee)===true){
+        
+    }else{
+        let playersFeeTotal = playersArray.length * playerFee;
+        document.getElementById('player-expense').innerText = playersFeeTotal;
+    } 
+    document.getElementById('player-fee').value = '';
 })
 
+//total fee calculation
 document.getElementById('fee-total').addEventListener('click', function(){
 
     let playersFeeTotal = parseInt(document.getElementById('player-expense').innerText);
     let managerFee = parseInt(document.getElementById('manager').value);
     let coachFee = parseInt(document.getElementById('coach').value);
 
-    let totalFee = sum(playersFeeTotal, managerFee, coachFee);
-    document.getElementById('total').innerHTML = totalFee;
+    if((isNaN(managerFee)) || (isNaN(coachFee)) === true || playersFeeTotal == ''){
+        alert('Please enter a number.');
+    }else{
+        let totalFee = sum(playersFeeTotal, managerFee, coachFee);
+        document.getElementById('total').innerHTML = totalFee;
+    }
+    document.getElementById('manager').value = '';
+    document.getElementById('coach').value = '';
 })
 
 function sum(costForPlayer, costForManager , costForCoach){
