@@ -31,7 +31,7 @@ document.getElementById('player-fee-total').addEventListener('click', function()
 
     const playerFee = parseInt(document.getElementById('player-fee').value);
     if(isNaN(playerFee)===true){
-        
+        alert('Please enter a valid number.');
     }else{
         let playersFeeTotal = playersArray.length * playerFee;
         document.getElementById('player-expense').innerText = playersFeeTotal;
@@ -46,8 +46,8 @@ document.getElementById('fee-total').addEventListener('click', function(){
     let managerFee = parseInt(document.getElementById('manager').value);
     let coachFee = parseInt(document.getElementById('coach').value);
 
-    if((isNaN(managerFee)) || (isNaN(coachFee)) === true || playersFeeTotal == ''){
-        alert('Please enter a number.');
+    if((isNaN(managerFee)) || (isNaN(coachFee)) === true || playersFeeTotal < 0 || managerFee < 0 || coachFee < 0 ){
+        alert('Please enter a valid number.');
     }else{
         let totalFee = sum(playersFeeTotal, managerFee, coachFee);
         document.getElementById('total').innerHTML = totalFee;
