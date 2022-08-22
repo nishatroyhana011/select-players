@@ -32,7 +32,19 @@ document.getElementById('player-fee-total').addEventListener('click', function()
     const playerFee = parseInt(document.getElementById('player-fee').value);
     let playersFeeTotal = playersArray.length * playerFee;
     document.getElementById('player-expense').innerText = playersFeeTotal;
+   
 })
 
+document.getElementById('fee-total').addEventListener('click', function(){
 
+    let playersFeeTotal = parseInt(document.getElementById('player-expense').innerText);
+    let managerFee = parseInt(document.getElementById('manager').value);
+    let coachFee = parseInt(document.getElementById('coach').value);
 
+    let totalFee = sum(playersFeeTotal, managerFee, coachFee);
+    document.getElementById('total').innerHTML = totalFee;
+})
+
+function sum(costForPlayer, costForManager , costForCoach){
+    return costForPlayer + costForManager + costForCoach;
+}
